@@ -1,0 +1,8 @@
+com\duwei\protocol\Packet.class
+com\duwei\protocol\response\RegisterPublicKeyResponsePacket.class
+com\duwei\protocol\serialize\impl\JsonSerializer.class
+com\duwei\protocol\serialize\Serializer.class
+com\duwei\protocol\PacketCodec.class
+com\duwei\protocol\request\RegisterPublicKeyRequestPacket.class
+com\duwei\protocol\message\MessageType.class
+com\duwei\protocol\serialize\SerializerAlgorithm.class
