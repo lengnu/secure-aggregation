@@ -29,7 +29,7 @@ public class SecretShare {
      * @param usersId     每个用户的ID，作为多项式的输入
      * @return Map，key为用户的Id，值为该用户的份额
      */
-    public static Map<BigInteger, BigInteger> share(BigInteger secret, int totalNumber, int threshold, BigInteger[] usersId) {
+    public static Map<BigInteger, byte[]> share(BigInteger secret, int totalNumber, int threshold, BigInteger[] usersId) {
         if (secret == null || threshold > totalNumber
                 || threshold < 2 || usersId == null || usersId.length != totalNumber) {
             throw new RuntimeException("输入参数不正确");
@@ -43,7 +43,7 @@ public class SecretShare {
         }
 
         //进行秘密分享
-        Map<BigInteger, BigInteger> sharesMap = new HashMap<>();
+        Map<BigInteger, byte[]> sharesMap = new HashMap<>();
         for (int i = 0; i < totalNumber; i++) {
             sharesMap.put(usersId[i], computeShare(coefficients, usersId[i]));
 
@@ -68,7 +68,7 @@ public class SecretShare {
      * @param input        输入
      * @return 生成份额
      */
-    private static BigInteger computeShare(BigInteger[] coefficients, BigInteger input) {
+    private static byte[] computeShare(BigInteger[] coefficients, BigInteger input) {
         if (coefficients == null || coefficients.length < 2) {
             throw new RuntimeException("系数多项系格式错误");
         }
@@ -80,7 +80,7 @@ public class SecretShare {
             base = base.multiply(input);
             result = result.add(cur).mod(MOD);
         }
-        return result;
+        return result.toByteArray();
     }
 
 
@@ -92,7 +92,7 @@ public class SecretShare {
      * @return 重建的秘密
      * @throws Exception
      */
-    public static BigInteger reconstruction(Map<BigInteger, BigInteger> sharesMap, int t) {
+    public static byte[] reconstruction(Map<BigInteger, byte[]> sharesMap, int t) {
         int selected = sharesMap.size();
         if (selected < t) {
             throw new RuntimeException("当前收集的秘密份额不足以恢复秘密");
@@ -101,11 +101,12 @@ public class SecretShare {
         BigInteger result = BigInteger.ZERO;
         BigInteger[] userIds = sharesMap.keySet().stream().limit(t).toArray(BigInteger[]::new);
         for (int i = 0; i < t; i++) {
-            BigInteger temp = sharesMap.get(userIds[i]).multiply(interpolation(userIds, userIds[i], t));
+
+            BigInteger temp =new BigInteger( sharesMap.get(userIds[i])).multiply(interpolation(userIds, userIds[i], t));
             result = result.add(temp).mod(MOD);
         }
 
-        return result;
+        return result.toByteArray();
     }
 
     /**
@@ -136,18 +137,25 @@ public class SecretShare {
 
     public static void main(String[] args) throws Exception {
         BigInteger[] usersId = new BigInteger[]{
-                new BigInteger("12332442"),
-                new BigInteger("23424234"),
-                new BigInteger("3324324"),
-                new BigInteger("4324234"),
-                new BigInteger("5423423"),
-                new BigInteger("542323423"),
-                new BigInteger("5443423"),
+                new BigInteger("1333333333333333333333333333"),
+                new BigInteger("243343434"),
+                new BigInteger("3"),
+                new BigInteger("4"),
+                new BigInteger("5"),
+                new BigInteger("6"),
+                new BigInteger("7"),
         };
-        BigInteger secret = new BigInteger("2343423423423424390768644243244324322");
+        BigInteger secret = new BigInteger("7346222222222222222783644444343434873264873");
+        System.out.println(secret.toByteArray().length);
         System.out.println("secret ：\t\t\t" + secret);
-        Map<BigInteger, BigInteger> sharesMap = share(secret, usersId.length, 5, usersId);
-        BigInteger reconstruction = reconstruction(sharesMap, 5);
+        Map<BigInteger, byte[]> sharesMap = share(secret, usersId.length, 5, usersId);
+        sharesMap.forEach((id,value) ->{
+            System.out.println(value.length);
+        });
+
+        byte[] reconstructionByte = reconstruction(sharesMap, 5);
+        System.out.println(reconstructionByte.length);
+        BigInteger reconstruction = new BigInteger(reconstructionByte);
         System.out.println("reconstruction ：\t"  + reconstruction);
     }
 }

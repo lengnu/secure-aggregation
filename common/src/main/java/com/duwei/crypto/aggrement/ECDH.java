@@ -42,59 +42,14 @@ public class ECDH {
         return keyPairGenerator.generateKeyPair();
     }
 
-    /**
-     * 协商出128-bit AES密钥
-     * @param publicKey
-     * @param privateKeyByte
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeySpecException
-     * @throws InvalidKeyException
-     */
-    public static SecretKey keyAgreementGenerateAES128SecretKey(PublicKey publicKey,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
-        byte[] bytes = keyAgreement(publicKey, privateKeyByte);
-        return new SecretKeySpec(bytes,0,16,"AES");
-    }
-
     public static SecretKey keyAgreementGenerateAES128SecretKey(byte[] publicKeyByte,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
         byte[] bytes = keyAgreement(publicKeyByte, privateKeyByte);
         return new SecretKeySpec(bytes,0,16,"AES");
     }
 
-
-
-    /**
-     * 协商出256-bit AES密钥
-     * @param publicKey
-     * @param privateKeyByte
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeySpecException
-     * @throws InvalidKeyException
-     */
-    public static SecretKey keyAgreementGenerateAES256SecretKey(PublicKey publicKey,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
-        byte[] bytes = keyAgreement(publicKey, privateKeyByte);
-        return new SecretKeySpec(bytes,0,32,"AES");
-    }
-
     public static SecretKey keyAgreementGenerateAES256SecretKey(byte[] publicKeyByte,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
         byte[] bytes = keyAgreement(publicKeyByte, privateKeyByte);
         return new SecretKeySpec(bytes,0,32,"AES");
-    }
-
-
-
-    /**
-     * 协商出64-bit 的随机种子
-     * @param publicKey
-     * @param privateKeyByte
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeySpecException
-     * @throws InvalidKeyException
-     */
-    public static byte[] keyAgreementRandomSeed(PublicKey publicKey,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
-        return keyAgreement(publicKey, privateKeyByte);
     }
 
     public static byte[] keyAgreementRandomSeed(byte[] publicKeyByte,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
@@ -120,18 +75,7 @@ public class ECDH {
         return keyAgreement.generateSecret();
     }
 
-    private static byte[] keyAgreement(PublicKey publicKey,byte[] privateKeyByte) throws NoSuchAlgorithmException, InvalidKeyException, InvalidKeySpecException {
-        //1.转换私钥
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_GENERATE_ALGORITHM);
-        PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(privateKeyByte);
-        PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
 
-        //2.密钥协商
-        KeyAgreement keyAgreement = KeyAgreement.getInstance(KEY_AGREEMENT_ALGORITHM);
-        keyAgreement.init(privateKey);
-        keyAgreement.doPhase(publicKey,true);
-        return keyAgreement.generateSecret();
-    }
 
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidKeyException {
         KeyPair keyPair = generateKeyPair();

@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b33b97e-9be8-4ce7-b256-2c1466c5f3ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/aggrement/ECDH.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/enc/AESCoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/random/SecurePRG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/test/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/test/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/random/PRG.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/target/classes/com/duwei/crypto/random/PRG.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/aggrement/ECDH.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/aggrement/ECDH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/enc/AESCoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/enc/AESCoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/random/SecurePRG.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/random/PRG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/shamir/SecretShare.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/crypto/shamir/SecretShare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/test/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/test/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/duwei/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/duwei/test/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/duwei/crypto/aggrement/ECDH.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/duwei/crypto/aggrement/ECDH.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/duwei/crypto/shamir/SecretShare.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/duwei/crypto/shamir/SecretShare.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/duwei/test/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/duwei/test/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/com/duwei/test/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/com/duwei/test/Test.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/common/src/main/java/com/duwei/protocol" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -85,19 +88,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DHAggrement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.duwei.crypto.aggrement.DHAggrement" />
-      <module name="common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.duwei.crypto.aggrement.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ECDH" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.duwei.crypto.aggrement.ECDH" />
       <module name="common" />
@@ -111,12 +101,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SecurePRG" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.duwei.crypto.random.SecurePRG" />
+    <configuration name="PRG" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.duwei.crypto.random.PRG" />
       <module name="common" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.duwei.crypto.random.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecretShare" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.duwei.crypto.shamir.SecretShare" />
+      <module name="common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.duwei.crypto.shamir.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,10 +143,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.SecretShare" />
         <item itemvalue="Application.ECDH" />
         <item itemvalue="Application.SecurePRG" />
         <item itemvalue="Application.AESCoder" />
-        <item itemvalue="Application.DHAggrement" />
       </list>
     </recent_temporary>
   </component>
@@ -161,6 +164,8 @@
       <workItem from="1668387202043" duration="1603000" />
       <workItem from="1668389792875" duration="7978000" />
       <workItem from="1668410017096" duration="5578000" />
+      <workItem from="1668425009101" duration="1361000" />
+      <workItem from="1668427012060" duration="10983000" />
     </task>
     <servers />
   </component>
@@ -185,11 +190,17 @@
           <properties class="java.lang.ArithmeticException" package="java.lang" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/common/src/main/java/com/duwei/test/Test.java</url>
+          <line>175</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="java.security.SecureRandom" memberName="provider" />
+        <PinnedItemInfo parentTag="java.util.HashMap$Node" memberName="value" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
