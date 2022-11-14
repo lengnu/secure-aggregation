@@ -42,7 +42,6 @@ public class SecretShare {
             coefficients[i] = generateRandomBigIntegerLessMod();
         }
 
-
         //进行秘密分享
         Map<BigInteger, BigInteger> sharesMap = new HashMap<>();
         for (int i = 0; i < totalNumber; i++) {
